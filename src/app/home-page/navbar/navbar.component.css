@@ -1,0 +1,57 @@
+.hamburger {
+  display: none;
+  background: none;
+  color: black;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Contenedor que alinea el botón y dropdown */
+.mobile-menu-container {
+  position: relative;
+}
+
+/* Dropdown escondido inicialmente */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  display: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: .5rem;
+  min-width: 160px;
+  z-index: 2;
+}
+
+/* Mostrar menú al abrir */
+.dropdown-menu.open {
+  display: flex;
+}
+
+/* Escritorio */
+.menu-desktop {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .menu-desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .mobile-menu-container {
+    display: none;
+  }
+}
