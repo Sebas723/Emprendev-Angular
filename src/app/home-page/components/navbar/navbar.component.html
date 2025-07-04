@@ -1,0 +1,38 @@
+<nav class= "fluid-horizontal-padding w-full h-auto fixed text-black py-4 flex justify-between items-center z-20 bg-[var(--primary-color)]">
+    <!-- Navbar para escritorio-->
+    <div class="flex gap-1 align-content-center">
+        <img src="icons/Logo.svg" alt="logo" class="w-10 h-10 cursor-pointer">
+        <p class="text-3xl font-bold">Emprendev</p>
+    </div>  
+
+    <div class="menu-desktop">
+        <ul class="flex gap-6 [&>li]:cursor-pointer font-medium">
+            <li>Inicio</li>
+            <li>Acerca de Nosotros</li>
+            <li>Nuestros Servicios</li>
+            <li>Contactanos</li>
+        </ul>
+    </div>
+
+    <div class="menu-desktop">
+        <ul class="flex gap-6 [&>li]:cursor-pointer font-medium">
+            <li>Registrarse</li>
+            <li>Iniciar Sesión</li>
+        </ul>
+    </div>
+
+    <!-- Contenedor del botón y dropdown -->
+    <div class="mobile-menu-container">
+        <button class="hamburger" (click)="toggleMenu()">☰</button>
+
+        <!-- Menú dropdown justo debajo -->
+        <div class="dropdown-menu" [class.open]="menuOpen">
+            <ul class="text-black text-sm list-none [&>li]:cursor-pointer [&>li]:py-3">
+                <li (click)="closeMenu()">Inicio</li>
+                <li (click)="closeMenu()">Acerca de Nosotros</li>
+                <li (click)="closeMenu()">Nuestros Servicios</li>
+                <li (click)="closeMenu()">Contactanos</li>
+            </ul>
+        </div>
+    </div>
+</nav>

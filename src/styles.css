@@ -6,11 +6,9 @@
     --primary-color: #ffffff;
 }
 
-
-main {
-    background-color: var(--primary-color);
-    padding-left: clamp(1rem, 10vw, 10rem);
-    padding-right: clamp(1rem, 10vw, 10rem);
+.fluid-horizontal-padding {
+  padding-left: clamp(1rem, 10vw, 10rem);
+  padding-right: clamp(1rem, 10vw, 10rem);
 }
 
 html, body{
