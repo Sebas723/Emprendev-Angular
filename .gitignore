@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Tailwind Styles
-src/styles/output.css
+src/output.css
