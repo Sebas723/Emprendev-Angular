@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.images-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 16px;
+  width: 100%;
+}
+
+.images-gallery-container > div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  grid-row: span var(--row-span, 3);
+}
+
+.images-gallery-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1560px) {
+    .card img {
+        display: none;
+    }
+}
+
+@media (max-width: 1080px ) {
+
+    .images-gallery-container{
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+}
