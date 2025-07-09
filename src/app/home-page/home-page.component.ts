@@ -4,6 +4,7 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
 import { AboutUsSectionComponent } from './components/about-us-section/about-us-section.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     HeroSectionComponent,
     AboutUsSectionComponent,
     OurServicesComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    FooterComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
