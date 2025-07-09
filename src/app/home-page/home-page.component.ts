@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { AboutUsSectionComponent } from './components/about-us-section/about-us-section.component';
+import { OurServicesComponent } from './components/our-services/our-services.component';
 
 @Component({
   selector: 'app-home-page',
   imports: [
     NavbarComponent,
     HeroSectionComponent,
-    AboutUsSectionComponent
+    AboutUsSectionComponent,
+    OurServicesComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
