@@ -3,6 +3,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { AboutUsSectionComponent } from './components/about-us-section/about-us-section.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,8 @@ import { OurServicesComponent } from './components/our-services/our-services.com
     NavbarComponent,
     HeroSectionComponent,
     AboutUsSectionComponent,
-    OurServicesComponent
+    OurServicesComponent,
+    ContactUsComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
