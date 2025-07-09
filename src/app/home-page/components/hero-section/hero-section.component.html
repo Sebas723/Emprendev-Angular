@@ -1,10 +1,22 @@
-<section class="relative w-full overflow-hidden mt-[4.5rem] z-10 pb-5">
-  <video src="images/Desktop Header new version.mp4" autoplay loop muted class="video"></video>
+<div id="scroll-anchor-home" class="h-24 -mt-24 scroll-mt-24"></div>
 
-  <div class="absolute inset-x-0 -mt-96 flex justify-center items-center fluid-horizontal-padding">
-    <h1 class="text-6xl font-semibold text-white">Hola mundo</h1>
-  </div>
+<section class="relative w-full overflow-hidden mt-[4.5rem] z-10 pb-5" id="home">
+  <video src="images/Desktop-Header-new-version.mp4" autoplay loop muted class="video"></video>
 
+<div
+  class="absolute inset-x-0 -mt-96 flex flex-col gap-8 justify-center items-center fluid-horizontal-padding"
+>
+  <h1
+    class="text-container text-6xl font-semibold text-white"
+    #textContainer
+    id="text-container"
+    aria-live="polite"
+  ></h1>
+
+<!-- <button class="backdrop-blur-md bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-10 rounded-xl border border-white">
+  Comenzar
+</button> -->
+</div>
   <div class="box-area w-full h-auto flex justify-center items-center pt-5 fluid-horizontal-padding">
 
     <div class="h-[180px] bg-[var(--primary-color)] rounded-xl border flex flex-col justify-center items-center gap-4 cursor-pointer hover:-translate-y-3 duration-300 hover:shadow-lg hover:shadow-blue-300">

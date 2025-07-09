@@ -1,4 +1,4 @@
-<nav class= "fluid-horizontal-padding w-full h-auto fixed text-black py-4 flex justify-between items-center z-20 bg-[var(--primary-color)]">
+<nav class= "fluid-horizontal-padding w-full h-auto fixed text-black border-b-[1px] py-4 flex justify-between items-center z-20 bg-[var(--primary-color)]">
     <!-- Navbar para escritorio-->
     <div class="flex gap-1 align-content-center">
         <img src="icons/Logo.svg" alt="logo" class="w-10 h-10 cursor-pointer">
@@ -7,10 +7,10 @@
 
     <div class="menu-desktop">
         <ul class="flex gap-6 [&>li]:cursor-pointer font-medium">
-            <li>Inicio</li>
-            <li>Acerca de Nosotros</li>
-            <li>Nuestros Servicios</li>
-            <li>Contactanos</li>
+            <li (click)="scrollTo('scroll-anchor-home')">Inicio</li>
+            <li (click)="scrollTo('about-us')">Acerca de Nosotros</li>
+            <li (click)="scrollTo('our-services')">Nuestros Servicios</li>
+            <li (click)="scrollTo('contact-us')">Contactanos</li>
         </ul>
     </div>
 
