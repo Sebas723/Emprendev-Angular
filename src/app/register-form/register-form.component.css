@@ -1,7 +1,6 @@
 .box-area {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 22px;
 }
 
 @media (max-width: 1198px) {
@@ -35,4 +34,16 @@ input::placeholder, textarea::placeholder {
   flex-direction: row;
   gap: 10px;
   align-items: center;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-message {
+  font-size: 0.875rem; /* equivalente a text-sm */
+  color: #dc2626;      /* rojo para errores */
+  min-height: 1.25rem; /* siempre deja espacio, aunque no haya mensaje */
 }
