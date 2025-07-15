@@ -1,0 +1,41 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+}
+
+@media (max-width: 1400px) {
+  .box-area > *:nth-last-child(1):nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+.fluid-horizontal-padding-register-section {
+  padding-left: clamp(1rem, 1vw, 1rem);
+  padding-right: clamp(1rem, 1vw, 1rem);
+}
+
+.customize-input{
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    outline: none;
+    background-color: rgb(243, 243, 243);
+}
+
+input::placeholder, textarea::placeholder {
+  color: black;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-message {
+  font-size: 0.875rem;
+  color: #dc2626;
+  min-height: 1.25rem;
+}
