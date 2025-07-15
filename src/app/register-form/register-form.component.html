@@ -1,10 +1,10 @@
-<main class="w-full h-screen flex flex-col items-center gap-20 fluid-horizontal-padding-form py-4">
+<main class="w-full h-screen flex flex-col items-center gap-20 fluid-horizontal-padding-register-section py-4">
 
-    <div class="w-full h-auto">
-        <button class="bg-black py-2 px-5 rounded-xl font-bold text-white">Ingresar</button>
+    <div class="w-full h-auto cursor-pointer" [routerLink]="['/home']">
+        <svg viewBox="0 0 24 24" width="50px" height="50px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 4V20M8 12H20M8 12L12 8M8 12L12 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
     </div>
 
-    <div class="w-8/12 h-[150rem] mt-auto box-area items-center bg-white shadow-2xl rounded-3xl">        
+    <div class="w-8/12 h-[150rem] mt-auto items-center bg-white shadow-2xl rounded-3xl box-area">        
         <div class="w-full h-full bg-blue-400 flex flex-col justify-center items-center py-6 rounded-3xl rounded-br-[500px] rounded-tr-[0px]">
             <div class="flex flex-col items-center px-6 text-white">
                 <h1 class="text-3xl font-semibold">Hola mundo</h1>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="w-full h-full flex flex-col items-center gap-5 rounded-r-2xl px-12 py-6">
+        <div class="w-full h-full flex flex-col items-center gap-8 rounded-r-2xl px-6 py-6">
             <div class="flex flex-col items-center">
                 <h1 class="text-3xl font-semibold">Formulario de Registro</h1>
                 <p>
@@ -166,7 +166,11 @@
                     <label>Aceptar términos y condiciones</label>
                 </div>
 
-                <button class="bg-blue-400 py-2 px-5 rounded-xl font-bold text-white" [disabled]="!form.valid">Ingresar</button>
+                @if(!form.valid) {
+                    <button class="bg-gray-400 py-2 px-5 rounded-xl font-bold text-white" [disabled]="!form.valid">Completa los campos</button>
+                } @else {
+                    <button class="bg-blue-400 py-2 px-5 rounded-xl font-bold text-white">Ingresar</button>
+                }
             </form>
 
         </div>

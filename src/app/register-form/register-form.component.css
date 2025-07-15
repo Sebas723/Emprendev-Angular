@@ -1,15 +1,15 @@
 .box-area {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
 }
 
-@media (max-width: 1198px) {
-        .box-area > *:nth-last-child(1):nth-child(odd) {
-        grid-column: 1 / -1;
-    }
+@media (max-width: 1400px) {
+  .box-area > *:nth-last-child(1):nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
-.fluid-horizontal-padding-form {
+.fluid-horizontal-padding-register-section {
   padding-left: clamp(1rem, 1vw, 1rem);
   padding-right: clamp(1rem, 1vw, 1rem);
 }
@@ -30,10 +30,9 @@ input::placeholder, textarea::placeholder {
 
 .input-row {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
 }
 
 .input-wrapper {
@@ -43,7 +42,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .input-message {
-  font-size: 0.875rem; /* equivalente a text-sm */
-  color: #dc2626;      /* rojo para errores */
-  min-height: 1.25rem; /* siempre deja espacio, aunque no haya mensaje */
+  font-size: 0.875rem;
+  color: #dc2626;
+  min-height: 1.25rem;
 }
