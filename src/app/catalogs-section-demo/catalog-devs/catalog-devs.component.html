@@ -1,3 +1,21 @@
+<!-- Sidebar dinamico para las tarjetas -->
+<div class="relative">
+    <div class="fixed top-0 right-0 w-4/12 h-screen bg-white shadow-2xl transition-transform duration-300 z-30" [class.translate-x-full]="!isSidebarOpen"
+    [class.translate-x-0]="isSidebarOpen"
+    >
+
+    <button (click)="isSidebarOpen = false">Cerrar</button>
+    </div>
+
+    <div
+    class="fixed inset-0 bg-black bg-opacity-40 z-20 transition-opacity duration-300"
+    [class.opacity-0]="!isSidebarOpen"
+    [class.opacity-100]="isSidebarOpen"
+    *ngIf="isSidebarOpen"
+    (click)="isSidebarOpen = false"
+    ></div>
+</div>
+
 <main class="w-full flex flex-row">
 
     <div class="sidebar">
@@ -83,7 +101,7 @@
     </div>
 
     <div class="w-full h-screen px-10 flex flex-col gap-2 overflow-y-auto">
-        <nav class="w-full text-black border-b-[1px] py-4 flex justify-between z-20 bg-[var(--primary-color)]">
+        <nav class="w-full text-black border-b-[1px] py-4 flex justify-between bg-[var(--primary-color)]">
 
             <div class="w-full flex gap-4 items-center">
                 <i class="pi pi-briefcase text-3xl"></i>
@@ -137,7 +155,7 @@
                         </div>
 
                         <div class="w-full h-8/12 flex gap-1 py-3 px-4">
-                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
+                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white" (click)="isSidebarOpen = true">Ver detalles</button>
                             <!-- <button class="w-full py-2 px-6 bg-blue-100 rounded-2xl">Aplicar</button> -->
                         </div>
                     </div>
