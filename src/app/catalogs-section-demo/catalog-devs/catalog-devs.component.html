@@ -1,0 +1,234 @@
+<!-- Sidebar dinamico para las tarjetas -->
+<div class="relative">
+    <div class="fixed top-0 right-0 w-4/12 h-screen bg-white shadow-2xl transition-transform duration-300 z-30" [class.translate-x-full]="!isSidebarOpen"
+    [class.translate-x-0]="isSidebarOpen"
+    >
+
+    <button (click)="isSidebarOpen = false">Cerrar</button>
+    </div>
+
+    <div
+    class="fixed inset-0 bg-black bg-opacity-40 z-20 transition-opacity duration-300"
+    [class.opacity-0]="!isSidebarOpen"
+    [class.opacity-100]="isSidebarOpen"
+    *ngIf="isSidebarOpen"
+    (click)="isSidebarOpen = false"
+    ></div>
+</div>
+
+<main class="w-full flex flex-row">
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="icons/Logo.svg" alt="logo">
+            <h2>Emprendev</h2>
+        </div>
+
+        <ul class="sidebar-links">
+            <h4>
+                <span>Menu principal</span>
+                <div class="menu-separator"></div>
+            </h4>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-briefcase text-2xl"></i>
+                    </span>Ofertas
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-users text-2xl"></i>
+                    </span>Desarrolladores
+                </a>
+            </li>
+            <h4>
+                <span>General</span>
+                <div class="menu-separator"></div>
+            </h4>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-wrench text-2xl"></i>
+                    </span>Ayuda 
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-external-link text-2xl"></i>
+                    </span>Terminos de uso
+                </a>
+            </li>
+            <h4>
+                <span>Mi cuenta</span>
+                <div class="menu-separator"></div>
+            </h4>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-user text-2xl"></i>
+                    </span>Mi perfil
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-send text-2xl"></i>
+                    </span>Mis solicitudes
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>
+                        <i class="pi pi-sign-out text-2xl"></i>
+                    </span>Cerrar sesión
+                </a>
+            </li>
+        </ul>
+
+        <div class="user-account">
+            <div class="user-profile">
+                <img src="images/img2.jpg" alt="" class="w-14 h-14 rounded-full object-cover">
+                <div class="user-detail">
+                    <h3>Eva Murphy</h3>
+                    <span>Web Developer</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w-full h-screen px-10 flex flex-col gap-2 overflow-y-auto">
+        <nav class="w-full text-black border-b-[1px] py-4 flex justify-between bg-[var(--primary-color)]">
+
+            <div class="w-full flex gap-4 items-center">
+                <i class="pi pi-briefcase text-3xl"></i>
+                <h1 class="text-3xl font-semibold">Catalogo de desarrolladores</h1>
+            </div>
+
+            <div class="w-full flex items-center justify-end">
+                <input type="search" placeholder="Buscar" class="w-6/12 py-2 px-2 rounded-l-lg bg-gray-100">
+                
+                <button>
+                    <i class="pi pi-search text-xl text-white py-1 px-2 rounded-r-lg" style="background-color: rgb(20, 20, 20)"></i>
+                </button>   
+            </div>
+        </nav>
+        
+        
+        <div class="py-4 flex flex-col gap-6">
+
+            <div class="w-full h-full flex flex-wrap gap-2 justify-center">
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+                <button class="py-2 px-6 border rounded-xl">Filtro</button>
+            </div>
+
+
+            <!-- Tarjetas de desarrolladores-->
+            <div class="w-full h-full gap-6 box-area">
+                <div class="w-full h-auto border rounded-2xl"> 
+                    <div class="w-full h-40 rounded-t-2xl" style="background: linear-gradient(150deg, rgb(41, 41, 41) 10%, white 100%)">
+                    </div>
+
+                    <div> 
+                        <div class="w-32 h-32 bg-red-500 rounded-full mx-auto -mt-16 border-4 border-white shadow-xl">
+                            <img src="images/img2.jpg" alt="" class="w-full h-full object-cover rounded-full">
+                        </div>
+
+                        <div class="w-full flex flex-col gap-1 py-3 px-4">
+                            <h4 class="font-semibold text-xl">Advanced card</h4>
+                            <span class="text-gray-400">Lorem ipsum dolor sit</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur</p>
+                        </div>
+
+                        <div class="w-full h-8/12 flex gap-1 py-3 px-4">
+                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white" (click)="isSidebarOpen = true">Ver detalles</button>
+                            <!-- <button class="w-full py-2 px-6 bg-blue-100 rounded-2xl">Aplicar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="w-full h-auto border rounded-2xl"> 
+                    <div class="w-full h-40 rounded-t-2xl" style="background: linear-gradient(150deg, rgb(41, 41, 41) 10%, white 100%)">
+                    </div>
+
+                    <div> 
+                        <div class="w-32 h-32 bg-red-500 rounded-full mx-auto -mt-16 border-4 border-white shadow-xl">
+                            <img src="images/img2.jpg" alt="" class="w-full h-full object-cover rounded-full">
+                        </div>
+
+                        <div class="w-full flex flex-col gap-1 py-3 px-4">
+                            <h4 class="font-semibold text-xl">Advanced card</h4>
+                            <span class="text-gray-400">Lorem ipsum dolor sit</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur</p>
+                        </div>
+
+                        <div class="w-full h-8/12 flex gap-1 py-3 px-4">
+                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
+                            <!-- <button class="w-full py-2 px-6 bg-blue-100 rounded-2xl">Aplicar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="w-full h-auto border rounded-2xl"> 
+                    <div class="w-full h-40 rounded-t-2xl" style="background: linear-gradient(150deg, rgb(41, 41, 41) 10%, white 100%)">
+                    </div>
+
+                    <div> 
+                        <div class="w-32 h-32 bg-red-500 rounded-full mx-auto -mt-16 border-4 border-white shadow-xl">
+                            <img src="images/img2.jpg" alt="" class="w-full h-full object-cover rounded-full">
+                        </div>
+
+                        <div class="w-full flex flex-col gap-1 py-3 px-4">
+                            <h4 class="font-semibold text-xl">Advanced card</h4>
+                            <span class="text-gray-400">Lorem ipsum dolor sit</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur</p>
+                        </div>
+
+                        <div class="w-full h-8/12 flex gap-1 py-3 px-4">
+                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
+                            <!-- <button class="w-full py-2 px-6 bg-blue-100 rounded-2xl">Aplicar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="w-full h-auto border rounded-2xl"> 
+                    <div class="w-full h-40 rounded-t-2xl" style="background: linear-gradient(150deg, rgb(41, 41, 41) 10%, white 100%)">
+                    </div>
+
+                    <div> 
+                        <div class="w-32 h-32 bg-red-500 rounded-full mx-auto -mt-16 border-4 border-white shadow-xl">
+                            <img src="images/img2.jpg" alt="" class="w-full h-full object-cover rounded-full">
+                        </div>
+
+                        <div class="w-full flex flex-col gap-1 py-3 px-4">
+                            <h4 class="font-semibold text-xl">Advanced card</h4>
+                            <span class="text-gray-400">Lorem ipsum dolor sit</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur</p>
+                        </div>
+
+                        <div class="w-full h-8/12 flex gap-1 py-3 px-4">
+                            <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
+                            <!-- <button class="w-full py-2 px-6 bg-blue-100 rounded-2xl">Aplicar</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
