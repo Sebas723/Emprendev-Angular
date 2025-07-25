@@ -4,6 +4,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CatalogsSectionDemoComponent } from './catalogs-section-demo/catalogs-section-demo.component';
 import { CatalogDevsComponent } from './catalogs-section-demo/catalog-devs/catalog-devs.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,10 @@ export const routes: Routes = [
     {
         path: 'catalog-devs',
         component: CatalogDevsComponent,
+    },
+    {
+        path: 'user-profile',
+        component: UserProfileComponent,
     },
     {
         path: '**',
