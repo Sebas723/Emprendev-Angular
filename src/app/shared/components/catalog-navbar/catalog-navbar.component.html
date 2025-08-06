@@ -1,0 +1,20 @@
+<nav class="w-full text-black border-b-[1px] py-4 flex justify-between bg-[var(--primary-color)]">
+
+    <div class="w-full flex gap-4 items-center">
+        @if (router.url === '/catalog-offer') {
+            <i class="pi pi-briefcase text-3xl"></i>
+            <h1 class="text-3xl font-semibold">Catalogo de ofertas</h1>            
+        } @else {
+            <i class="pi pi-code text-3xl"></i>
+            <h1 class="text-3xl font-semibold">Catalogo de desarrolladores</h1>
+        }
+    </div>
+
+    <div class="w-full flex items-center justify-end">
+        <input type="search" placeholder="Buscar" class="w-6/12 py-2 px-2 rounded-l-lg bg-gray-100">
+        
+        <button>
+            <i class="pi pi-search text-xl text-white py-1 px-2 rounded-r-lg" style="background-color: rgb(20, 20, 20)"></i>
+        </button>   
+    </div>
+</nav>

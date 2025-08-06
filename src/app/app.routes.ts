@@ -3,7 +3,7 @@ import { HomePageComponent } from './views/home-page/home-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CatalogsSectionDemoComponent } from './catalogs-section-demo/catalogs-section-demo.component';
-import { CatalogDevsComponent } from './catalogs-section-demo/catalog-devs/catalog-devs.component';
+import { CatalogDevsComponent } from './views/catalog-devs/catalog-devs.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
 
@@ -21,7 +21,7 @@ export const routes: Routes = [
         component: LoginFormComponent,
     },
     {
-        path: 'catalogs',
+        path: 'catalog-offer',
         component: CatalogsSectionDemoComponent,
     },
     {

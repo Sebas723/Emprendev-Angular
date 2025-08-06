@@ -1,0 +1,36 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <img src="icons/Logo.svg" alt="logo">
+        <h2>Emprendev</h2>
+    </div>
+
+    <ul class="sidebar-links">
+        @for(sidebarItem of sidebarItems; track sidebarItem.id) {
+            <h4>
+                <span>{{ sidebarItem.title }}</span>
+                <div class="menu-separator"></div>
+            </h4>
+
+            @for(item of sidebarItem.items; track $index) {
+                <li>
+                    <a [routerLink]="item.route">
+                        <span>
+                            <i [class]="item.icon" class="text-2xl"></i>
+                        </span>{{ item.text }}
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+
+    <div class="user-account">
+        <div class="user-profile">
+            <img src="images/img2.jpg" alt="" class="w-14 h-14 rounded-full object-cover">
+            <div class="user-detail">
+                <h3>Eva Murphy</h3>
+                <span>Web Developer</span>
+            </div>
+        </div>
+    </div>
+
+</div>
