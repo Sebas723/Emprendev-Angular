@@ -1,0 +1,43 @@
+<nav class= "fluid-horizontal-padding w-full h-auto fixed text-black border-b-[1px] py-4 flex justify-between items-center z-20 bg-[var(--primary-color)]">
+    
+    <!-- Navbar para escritorio-->
+    <div class="flex gap-1 align-content-center">
+        <img src="icons/Logo.svg" alt="logo" class="w-10 h-10 cursor-pointer">
+        <p class="text-3xl font-bold">Emprendev</p>
+    </div>  
+
+    <!-- Con esta clase le digo que se muestre de esta manera en resoluciones desde 1280px en adelante -->
+    <div class="hidden xl:flex">
+        <ul class="flex gap-6 [&>li]:cursor-pointer font-medium">
+            @for(item of navbarItems; track item.id) {
+                <li (click)="scrollTo(item.sectionId)">{{ item.title }}</li>
+            }
+        </ul>
+    </div>
+
+    <!-- Con esta clase le digo que se muestre de esta manera en resoluciones desde 1280px en adelante -->
+    <div class="hidden xl:flex">
+        <ul class="flex gap-6 [&>li]:cursor-pointer font-medium">
+            <li [routerLink]="['/register']">Registrarse</li>
+            <li [routerLink]="['/login']">Iniciar Sesión</li>
+        </ul>
+    </div>
+
+
+    <!-- Contenedor del menu dropdown -->
+    <!-- Con esta clase le digo que se muestre de esta manera en resoluciones desde 1279px y menores -->
+    <div class="block xl:hidden relative">
+        <button class="block xl:hidden text-3xl border-none cursor-pointer" (click)="toggleMenu()">☰</button>
+
+        <!-- Menú dropdown justo debajo para moviles -->
+        <div [ngClass]="{'flex': menuOpen, 'hidden': !menuOpen}" class="absolute top-full right-0 bg-[var(--primary-color)] flex-col gap-2 p-2 shadow-[0_0_10px_rgba(0,0,0,0.3)] rounded-lg min-w-[160px] z-20">
+            
+            <ul class="text-black text-sm list-none [&>li]:cursor-pointer [&>li]:py-3">
+                @for(itemMobile of navbarItems; track itemMobile.id) {
+                    <li (click)="scrollTo(itemMobile.sectionId); menuOpen && closeMenu()">{{ itemMobile.title }}</li>
+                }
+            </ul>
+
+        </div>
+    </div>
+</nav>

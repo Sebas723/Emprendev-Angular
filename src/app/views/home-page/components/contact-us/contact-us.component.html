@@ -1,9 +1,9 @@
 <main class="w-full h-auto fluid-horizontal-padding pt-3 flex flex-col items-center gap-8 pb-5 scroll-mt-[80px]" id="contact-us">
-    <p class="text-5xl">Contactanos</p>
+    <h2 class="text-5xl">Contactanos</h2>
 
     <div class="box-area w-full items-center">
-        <div action="" class="w-full flex flex-col gap-4 rounded-3xl pr-8 pb-10">
-            <h4 class="text-2xl">¿Que puedo hacer como desarrollador?</h4>
+        <div action="" class="w-full flex flex-col gap-4 rounded-3xl pr-3 pb-10">
+            <h4 class="text-2xl">¿Quieres hacernos llegar un mensaje especifico?</h4>
 
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, delectus repudiandae rem necessitatibus quo a tempora itaque amet eaque accusantium obcaecati distinctio facere cupiditate deserunt, velit vel ratione maxime voluptas veniam consectetur aut. Voluptatibus voluptas consequatur officiis velit voluptatum totam numquam mollitia perferendis ipsum necessitatibus. Provident non maxime possimus eveniet.
@@ -28,19 +28,31 @@
 
         </div>
 
-        <form action="" class="w-full max-h-[30rem] bg-blue-50 flex flex-col gap-3 rounded-3xl px-8 py-8">
+        <form action="" class="w-full border shadow-xl flex flex-col gap-3 rounded-xl px-8 py-6">
             
-            <input type="text" placeholder="Nombre" class="w-full h-8 px-2">
-            <input type="email" placeholder="Correo" class="w-full h-8 px-2">
+            <div>
+                <label for="userName" class="font-semibold text-base">Nombre completo</label>
+                <input type="text" id="userName" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa tu nombre completo">
+            </div>
 
-            <select name="" id="" class="w-full h-8 px-1 border-round">
-                <option value="">Selecciona un tema</option>
-                <option value="">Tema 1</option>
-                <option value="">Tema 2</option>
-                <option value="">Tema 3</option>
-            </select>
+            <div>
+                <label for="userEmail" class="font-semibold text-base">Correo electrónico</label>
+                <input type="text" id="userEmail" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa tu correo electrónico">
+            </div>
 
-            <textarea name="" id="" cols="30" rows="10" class="w-full h-10rem px-2 py-2 border-round" placeholder="Descripción"></textarea>
+            <div>
+                <label for="textType" class="font-semibold text-base">Tema del correo</label>
+                <select name="" id="textType" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1">
+                    <option value="">Selecciona un tema</option>
+                    <option value="">Empleo</option>
+                    <option value="">PQRS</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="messageDescription" class="font-semibold text-base">Tema del correo</label>
+                <textarea id="messageDescription" cols="30" rows="10" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Descripción"></textarea>
+            </div>
 
             <button class="bg-black py-2 px-5 rounded-xl font-bold text-white">Enviar</button>
 

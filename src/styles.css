@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 :root {
-    --primary-color: #ffffff;
+  --primary-color: #ffffff;
+  --secondary-color: #FAFAFA;
 }
 
 .fluid-horizontal-padding {
@@ -14,10 +15,10 @@
 }
 
 html, body{
-    scroll-behavior: smooth;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    box-sizing: border-box;
+  scroll-behavior: smooth;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }

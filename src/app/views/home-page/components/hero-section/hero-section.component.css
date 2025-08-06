@@ -1,0 +1,61 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-gap: 22px;
+}
+
+@media (max-width: 1107px) {
+  .box-area > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+:host ::ng-deep .text-container {
+  display: flex;
+  position: relative;
+}
+
+:host ::ng-deep .letter {
+  opacity: 0;
+  transform: translateY(40px);
+  display: inline-block;
+}
+
+:host ::ng-deep .fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+:host ::ng-deep .fade-out-up {
+  animation: fadeOutUpSmooth 0.8s ease-in forwards;
+}
+
+/* Animacion para la entrada de las letras */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animacion para la salida de las letras */
+@keyframes fadeOutUpSmooth {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}

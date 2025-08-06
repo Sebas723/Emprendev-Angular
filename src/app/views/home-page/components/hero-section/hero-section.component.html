@@ -1,0 +1,26 @@
+<div id="scroll-anchor-home" class="h-24 -mt-24 scroll-mt-24"></div>
+
+<section class="w-full overflow-hidden mt-[4.5rem] z-10 pb-5 bg-[var(--primary-color)]" id="home">
+
+  <video src="images/Desktop-Header-new-version.mp4" autoplay loop muted class="w-full h-[70vh] object-cover" aria-hidden="true" role="presentation"></video>
+
+    <div class="absolute inset-x-0 -mt-96 flex flex-col gap-8 justify-center items-center fluid-horizontal-padding">
+        <h1
+            class="text-container text-6xl font-semibold text-white"
+            #textContainer
+            id="text-container"
+            aria-live="polite"
+        ></h1>
+    </div>
+
+    <!-- Contenedor de tarjetas TI -->
+    <div class="box-area w-full h-auto pt-5 fluid-horizontal-padding">
+        @for(item of cards; track item.id) {
+            <div class="h-[170px] w-full rounded-xl border flex flex-col justify-center items-center gap-3 cursor-pointer hover:-translate-y-3 duration-300 hover:shadow-lg hover:shadow-blue-100">
+                <i [class]="item.icon" class="text-3xl"></i>
+                <span class="font-semibold">{{ item.title }}</span>
+            </div>
+        }
+    </div>
+
+</section>

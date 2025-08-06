@@ -1,9 +1,9 @@
 <main class="w-full h-auto fluid-horizontal-padding pt-3 flex flex-col items-center gap-8 pb-5 scroll-mt-[80px]" id="our-services">
-    <p class="text-5xl">Nuestros servicios</p>
+    <h2 class="text-5xl">Nuestros servicios</h2>
 
-    <div class="card h-auto bg-green-50 flex flex-col gap-2 rounded-xl py-5 px-10">
+    <div class="card h-auto bg-neutral-50 flex flex-col gap-2 rounded-xl py-5 px-10">
        
-        <h4 class="text-2xl">¿Que puedo hacer como desarrollador?</h4>
+        <h3 class="text-2xl">¿Que puedo hacer como desarrollador?</h3>
 
         <div class="flex flex-row justify-between gap-30">
 
@@ -32,7 +32,7 @@
     </div>
 
 
-    <div class="card h-auto bg-green-50 flex flex-col gap-2 rounded-xl py-5 px-10">
+    <div class="card h-auto bg-neutral-50 flex flex-col gap-2 rounded-xl py-5 px-10">
 
         <div class="flex flex-row justify-between gap-30">
             <img src="images/img-dev.webp" alt="" width="700px" class="-mt-4">
@@ -50,7 +50,6 @@
                 </p>
 
                 <br>
-
                 <p> 
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto quas repellat provident 
                     porro blanditiis! Dicta ex fugit porro, aliquid reiciendis modi non deleniti, quisquam, dolorum
@@ -64,43 +63,15 @@
     </div>
 
 
-    <!-- Made with Emprendev -->
-    <h4 class="text-4xl">Hecho con Emprendev</h4>
+    <!-- Carrusel de imagenes para Emprendev -->
+    <h3 class="text-4xl">Hecho con Emprendev</h3>
+
     <div class="images-gallery-container">
-        <div style="--row-span: 2">
-            <img src="images/gallery1.jpg" alt="">
-        </div>
-        <div style="--row-span: 1">
-            <img src="images/gallery1.jpg" alt="">
-        </div>
-        <div style="--row-span: 1">
-            <img src="images/gallery2.jfif" alt="">
-        </div>
-        <div style="--row-span: 2">
-            <img src="images/gallery3.jpg" alt="">
-        </div>
-        <div style="--row-span: 1">
-            <img src="images/gallery3.jpg" alt="">
-        </div>
-        <div style="--row-span: 1">
-            <img src="images/gallery4.jpg" alt="">
-        </div>
-        <div style="--row-span: 2">
-            <img src="images/gallery5.png" alt="">
-        </div>
-        <div style="--row-span: 1">
-            <img src="images/gallery6.jfif" alt="">
-        </div>
-                <div style="--row-span: 2">
-            <img src="images/gallery6.jfif" alt="">
-        </div>
-                <div style="--row-span: 1">
-            <img src="images/gallery6.jfif" alt="">
-        </div>
-                <div style="--row-span: 2">
-            <img src="images/gallery3.jpg" alt="">
-        </div>
-    <!-- puedes seguir agregando imágenes -->
+        @for( image of galleryImages; track image.src) {
+            <div [style.--row-span]="image.rowSpan">
+                <img [src]="image.src" alt="" />
+            </div>
+        }
     </div>
 
 </main>
