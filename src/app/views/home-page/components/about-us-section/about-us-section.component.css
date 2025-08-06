@@ -1,0 +1,14 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 22px;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1198px) {
+.box-area > *:nth-last-child(1):nth-child(odd) {
+  grid-column: 1 / -1;
+}
+}
