@@ -1,0 +1,17 @@
+<!-- Sidebar dinamico para las tarjetas -->
+<div class="relative">
+    <div class="fixed top-0 right-0 w-4/12 h-screen bg-white shadow-2xl transition-transform duration-300 z-30" [class.translate-x-full]="!isSidebarOpen"
+    [class.translate-x-0]="isSidebarOpen"
+    >
+
+    <button (click)="isSidebarOpen = false">Cerrar</button>
+    </div>
+
+    <div
+    class="fixed inset-0 bg-black bg-opacity-40 z-20 transition-opacity duration-300"
+    [class.opacity-0]="!isSidebarOpen"
+    [class.opacity-100]="isSidebarOpen"
+    *ngIf="isSidebarOpen"
+    (click)="isSidebarOpen = false"
+    ></div>
+</div>

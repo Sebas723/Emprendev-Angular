@@ -1,0 +1,24 @@
+<main class="w-full flex flex-row">
+
+    <!-- Sidebar dinamico para la navegacion -->
+    <app-navigation-sidebar></app-navigation-sidebar>
+
+    <div class="w-full h-screen px-10 flex flex-col gap-2 overflow-y-auto">
+
+        <!-- Navbar para el catalogo de desarrolladores -->
+        <app-catalog-navbar></app-catalog-navbar>
+        
+        
+        <div class="py-4 flex flex-col gap-6">
+
+            <!-- Filtros para el catalogo de desarrolladores -->
+            <app-catalog-filter></app-catalog-filter>
+            
+            <!-- Tarjeta de desarrolladores-->
+            <app-developer-card></app-developer-card>
+
+        </div>
+    </div>
+</main>
+
+

@@ -67,7 +67,7 @@
     <h3 class="text-4xl">Hecho con Emprendev</h3>
 
     <div class="images-gallery-container">
-        @for( image of galleryImages; track image.src) {
+        @for( image of galleryImages; track $index) {
             <div [style.--row-span]="image.rowSpan">
                 <img [src]="image.src" alt="" />
             </div>
