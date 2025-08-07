@@ -1,0 +1,10 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
+@media (max-width: 1400px) {
+  .box-area {
+    grid-column: 1 / -1;
+  }
+}
