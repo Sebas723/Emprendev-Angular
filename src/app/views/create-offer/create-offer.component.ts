@@ -1,19 +1,59 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormGroup, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+//Componentes
+import { InfoCardComponent } from './components/info-card/info-card.component';
+
 // Interfaces
-import { OfferPreview } from '../interfaces/OfferPreview';
-import { TecnologiesTag, tecnologies } from '../interfaces/tecnologiesTag';
+import { tecnologies, TecnologiesTag } from '../../interfaces/tecnologiesTag';
+import { OfferPreview } from '../../interfaces/OfferPreview';
+import { TemplateInfoFormCard } from '../../interfaces/TemplateInfoFormCard';
 
 @Component({
   selector: 'app-create-offer',
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    InfoCardComponent
+  ],
   templateUrl: './create-offer.component.html',
   styleUrl: './create-offer.component.css'
 })
 export class CreateOfferComponent {
+
+  //Variable para la tarjeta de consejos y recordatorios
+  infoFormCard: TemplateInfoFormCard[] = [
+    //Arreglo para la tarjeta de consejos
+    { titleIcon: 'pi pi-lightbulb text-yellow-500', title: 'Consejos', subtitleOne: 'Consejos generales', 
+      textOne: [
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'Completa todos los campos' },
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'Revisa la información antes de enviar' },
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'Usa información precisa y actualizada' },
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'Considera cómo verán otros tu información' },
+      ],
+      subtitleTwo: 'Nota',
+      textTwo: [
+        { textIcon: 'pi pi-info-circle mt-1 text-blue-500', text: ' Una oferta clara y concisa es más fácil de entender para los usuarios.' },
+      ],
+    },
+
+    //Arreglo para la tarjeta de recordatorios
+    { titleIcon: 'pi pi-lightbulb text-yellow-500', title: 'Recordatorios', subtitleOne: 'Recordatorios generales', 
+      textOne: [
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'En el lateral derecho puedes ver una vista previa de tu oferta' },
+        { textIcon: 'pi pi-check-circle mt-1 text-green-500', text: 'Tenemos para ti una barra de progreso para que ver como está avanzando la creacion tu oferta' },
+      ],
+      subtitleTwo: 'Nota',
+      textTwo: [
+        { textIcon: 'pi pi-info-circle mt-1 text-blue-500', text: 'Nuestros administradores pueden eliminar o desactivar ofertas que no sean adecuadas' },
+        { textIcon: 'pi pi-info-circle mt-1 text-blue-500', text: 'Si no cumples con nuestras politicas de conducta tu cuenta podria ser bloqueada' },
+      ],
+    },
+  ]
+
   // Inyeccion para usar FormBuilder
   fb = inject(FormBuilder);
 
@@ -45,15 +85,24 @@ export class CreateOfferComponent {
 
   //Esta funcion permite el envio de datos del formulario
   onSubmit() {
+    // Actualiza manualmente los campos antes de validar
     this.offerForm.patchValue({
       tecnologies: this.selectedTecnologies.map(t => t.name),
       images: this.previewUrls.map(url => url)
-    })
+    });
 
-    console.log(this.offerForm.value);
-    console.log("Intentando enviar oferta...");
+    // Forzar validación
+    this.offerForm.updateValueAndValidity();
+
+    // Verificar validez
+    if (this.offerForm.valid) {
+      console.log("Formulario válido");
+      console.log(this.offerForm.value);
+    } else {
+      console.log("Formulario inválido");
+      console.log(this.offerForm.errors);
+    }
   }
-
 
   //Esta funcion se encarga de filtrar las tecnologias según el texto ingresado en el input
   search(): void {

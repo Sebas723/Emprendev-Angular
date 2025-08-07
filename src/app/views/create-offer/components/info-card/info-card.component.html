@@ -1,0 +1,29 @@
+<!-- Consejos y recordatorios -->
+ <div class="w-full flex flex-col gap-4">
+    <div class="border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
+        <div class="flex flex-row gap-2 justify-center items-center ">
+            <i [class]="infoCardData.titleIcon"></i>
+            <h4 class="text-lg font-semibold">{{infoCardData.title}}</h4>
+        </div>
+
+        <div class="flex flex-col gap-2">
+
+            <h4 class="font-semibold">{{ infoCardData.subtitleOne }}</h4>
+            @for(itemOne of infoCardData.textOne; track $index) {
+                <div class="flex flex-row gap-2 items-start">
+                    <i [class]="itemOne.textIcon"></i>
+                    <p class="text-gray-500">{{itemOne.text}}</p>
+                </div>
+            }
+
+            <!-- Nota -->
+            <h4 class="font-semibold">{{ infoCardData.subtitleTwo }}</h4>
+                @for(itemTwo of infoCardData.textTwo; track $index) {
+                    <div class="flex flex-row gap-2 items-start">
+                        <i [class]="itemTwo.textIcon"></i>
+                        <p class="text-blue-500">{{ itemTwo.text }}</p>
+                    </div>
+                }
+        </div>
+    </div>
+</div>

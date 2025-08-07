@@ -2,92 +2,16 @@
     <h1 class="text-3xl font-semibold">Crear oferta</h1>
     <p class="text-gray-500">Completa el formulario con ayuda de nuestros consejos</p>
 
-    <div class="w-full flex flex-row gap-4 mt-10 px-12">
+    <div class="w-full flex flex-row gap-4 mt-10">
 
         <!-- Contenedor de consejos y recordatorios  -->
         <div class="w-3/12 flex flex-col gap-4">
-
-            <!-- Consejos -->
-            <div class="border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
-                <div class="flex flex-row gap-2 justify-center items-center ">
-                    <i class="pi pi-lightbulb text-yellow-500"></i>
-                    <h4 class="text-lg font-semibold">Consejos</h4>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h4 class="font-semibold">Consejos generales</h4>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Completa todos los campos requeridos</p>
-                    </div>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Revisa la información antes de enviar</p>
-                    </div>
-                        
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Usa información precisa y actualizada</p>
-                    </div>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Considera cómo verán otros tu información</p>
-                    </div>
-
-                    <h4 class="font-semibold">Nota</h4>
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-info-circle mt-1 text-blue-500"></i>
-                        <p class="text-blue-500">Haz clic en cualquier campo para ver consejos específicos</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Recordatorios -->
-            <div class="border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
-                <div class="flex flex-row gap-2 justify-center items-center ">
-                    <i class="pi pi-lightbulb text-yellow-500"></i>
-                    <h4 class="text-lg font-semibold">Recordatorios</h4>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h4 class="font-semibold">Consejos generales</h4>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Completa todos los campos requeridos</p>
-                    </div>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Revisa la información antes de enviar</p>
-                    </div>
-                        
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Usa información precisa y actualizada</p>
-                    </div>
-
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                        <p class="text-gray-500">Considera cómo verán otros tu información</p>
-                    </div>
-
-
-                    <h4 class="font-semibold">Nota</h4>
-                    <div class="flex flex-row gap-2 items-start">
-                        <i class="pi pi-info-circle mt-1 text-blue-500"></i>
-                        <p class="text-blue-500">Haz clic en cualquier campo para ver consejos específicos</p>
-                    </div>
-                </div>
-            </div>
-
+            @for(infoFormCardItem of infoFormCard; track $index) {
+                <app-info-card [infoCardData]="infoFormCardItem"></app-info-card>
+            }
         </div>
 
-        <!-- Formulario  -->
+        <!-- Contenedor del formulario  -->
         <div class="w-6/12 border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
             <div>
                 <h4 class="text-lg font-semibold">Informacion de la oferta</h4>
@@ -135,11 +59,25 @@
                 <div>
                     <label for="title" class="font-semibold text-base">Título de la oferta *</label>
                     <input type="text" formControlName="title" id="title" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta">
+                    <span class="input-error-message w-full">
+                        @if(offerForm.get("title")?.invalid && offerForm.get("title")?.touched) {
+                            @if(offerForm.get("title")?.hasError("required")) {
+                                Este campo es obligatorio
+                            }
+                        }
+                    </span>
                 </div>
 
                 <div>
                     <label for="description" class="font-semibold text-base">Descripción de la oferta *</label>
                     <textarea id="description" formControlName="description" rows="10" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"></textarea>
+                    <span class="input-error-message w-full">
+                        @if(offerForm.get("description")?.invalid && offerForm.get("description")?.touched) {
+                            @if(offerForm.get("description")?.hasError("required")) {
+                                Este campo es obligatorio
+                            }
+                        }
+                    </span>
                 </div>
 
                 <!-- Tags de la oferta -->
@@ -180,7 +118,7 @@
         </div>
     
 
-        <div class="w-3/12 flex flex-col gap-2 items-center">
+        <div class="w-3/12 flex flex-col gap-4 items-center">
             
             <!-- Vista previa de la oferta -->
             <div class="w-full h-auto">     

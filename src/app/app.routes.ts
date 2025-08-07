@@ -5,7 +5,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { CatalogOfferComponent } from './views/catalog-offer/catalog-offer.component';
 import { CatalogDevsComponent } from './views/catalog-devs/catalog-devs.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { CreateOfferComponent } from './create-offer/create-offer.component';
+import { CreateOfferComponent } from './views/create-offer/create-offer.component';
 
 export const routes: Routes = [
     {
