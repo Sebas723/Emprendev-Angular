@@ -1,0 +1,138 @@
+<div>
+    <h4 class="text-lg font-semibold">Informacion de la oferta</h4>
+    <p class="text-gray-500">
+        Queremos ayudarte a crear una oferta atractiva. Asegúrate de llenar correctamente cada campo, 
+        proporcionando datos claros y reales. ¡Una buena descripción genera más 
+        interés!
+    </p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-4">
+   <!-- Imágenes de la oferta -->
+  <div>
+    <label for="images" class="font-semibold text-base block mb-1">Imágenes de la oferta (máx. 4)</label>
+    <label
+      class="w-full flex flex-col justify-center items-center py-4 gap-2 border-2 border-dashed rounded-lg cursor-pointer bg-gray-100"
+    >
+      <i class="pi pi-cloud-upload text-4xl text-gray-500"></i>
+      <p class="text-gray-600">Haz click para subir imágenes</p>
+      <p class="text-gray-600">PNG, JPG, JPEG</p>
+      <input
+        type="file"
+        id="images"
+        class="hidden"
+        accept="image/png, image/jpeg"
+        multiple
+        (change)="onFileChange($event)"
+      />
+    </label>
+
+    @if (previewUrls.length) {
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+        @for (img of previewUrls; track $index) {
+          <div class="relative group">
+            <img [src]="img" alt="Vista previa" class="w-full h-auto object-cover rounded" />
+            <div
+              class="absolute inset-0 bg-red-400 bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 rounded flex items-center cursor-pointer justify-center"
+              (click)="removeImage($index)"
+            >
+              <span class="text-white font-semibold">Eliminar</span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+   <!-- Título de la oferta -->
+  <div>
+    <label for="title" class="font-semibold text-base">Título de la oferta *</label>
+    <input
+      type="text"
+      formControlName="title"
+      id="title"
+      class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"
+      placeholder="Ingresa el título de la oferta"
+    />
+    <span class="input-error-message w-full">
+      @if (form.get('title')?.invalid && form.get('title')?.touched) {
+        @if (form.get('title')?.hasError('required')) { Este campo es obligatorio }
+      }
+    </span>
+  </div>
+
+  <!-- Descripción de la oferta -->
+  <div>
+    <label for="description" class="font-semibold text-base">Descripción de la oferta *</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      rows="10"
+      class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"
+      placeholder="Describe la oferta"
+    ></textarea>
+    <span class="input-error-message w-full">
+      @if (form.get('description')?.invalid && form.get('description')?.touched) {
+        @if (form.get('description')?.hasError('required')) { Este campo es obligatorio }
+      }
+    </span>
+  </div>
+
+  <!-- Tecnologías -->
+  <div>
+    <label for="tecnologies" class="font-semibold text-base">Tecnologias para la oferta</label>
+    <input
+      type="text"
+      id="tecnology"
+      class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"
+      placeholder="Ingresa las tecnologias"
+      [ngModel]="searchTecnology"
+      (ngModelChange)="onSearchInput($event)"
+      [ngModelOptions]="{ standalone: true }"
+    />
+
+    <ul class="rounded-lg mt-2 [&>li]:cursor-pointer" *ngIf="filteredTecnologies.length">
+      @for (tecnology of filteredTecnologies; track tecnology) {
+        <li class="px-2 py-2 hover:bg-blue-50 border-x" (click)="selectTecnology.emit(tecnology)">{{ tecnology.name }}</li>
+      }
+    </ul>
+
+    <div class="w-full flex flex-wrap gap-3">
+      @for (item of selectedTecnologies; track item.name) {
+        <span
+          class="text-sm inline-block mt-2 bg-green-200 px-2 py-1 rounded-lg cursor-pointer"
+          (click)="removeTecnology.emit(item)"
+        >
+          {{ item.name }} <i class="pi pi-times-circle text-[12px]"></i>
+        </span>
+      }
+    </div>
+  </div>
+
+  <!-- Remuneración y vacantes -->
+  <div class="flex flex-row justify-between gap-4 items-center">
+    <div class="w-full">
+      <label for="pay" class="font-semibold text-base">Remuneración *</label>
+      <input
+        type="text"
+        formControlName="pay"
+        id="pay"
+        class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"
+        placeholder="Ingresa la remuneración"
+      />
+    </div>
+
+    <div class="w-full">
+      <label for="vacancies" class="font-semibold text-base">Vacantes *</label>
+      <input
+        type="text"
+        formControlName="vacancies"
+        id="vacancies"
+        class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"
+        placeholder="Ingresa las vacantes"
+      />
+    </div>
+  </div>
+
+  <button class="bg-black py-2 px-5 mt-2 rounded-xl font-bold text-white">Ingresar</button>
+</form>

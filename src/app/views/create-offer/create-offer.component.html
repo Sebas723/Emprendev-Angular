@@ -1,0 +1,42 @@
+<main class="w-full flex flex-col justify-center items-center py-4 fluid-horizontal-padding">
+  <h1 class="text-3xl font-semibold">Crear oferta</h1>
+  <p class="text-gray-500">Completa el formulario con ayuda de nuestros consejos</p>
+
+  <div class="w-full flex flex-row gap-4 mt-10">
+     <!-- Consejos y recordatorios  -->
+    <div class="w-3/12 flex flex-col gap-4">
+      @for (infoFormCardItem of infoFormCard; track $index) {
+        <app-info-card [infoCardData]="infoFormCardItem"></app-info-card>
+      }
+    </div>
+
+    <!-- Formulario (componente hijo)  -->
+    <div class="w-6/12 border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
+
+      <app-offer-form
+        [form]="offerForm"
+        [previewUrls]="previewUrls"
+        [selectedTecnologies]="selectedTecnologies"
+        [filteredTecnologies]="filteredTecnologies"
+        [searchTecnology]="searchTecnology"
+        (searchTecnologyChange)="searchTecnology = $event"
+        (search)="search()"
+        (selectTecnology)="selectTecnology($event)"
+        (removeTecnology)="removeTecnology($event)"
+        (uploadImages)="handleImageUpload($event)"
+        (removeImageIndex)="removeImage($event)"
+        (submitForm)="onSubmit()"
+      />
+    </div>
+
+    <!-- Lateral derecho  -->
+    <div class="w-3/12 flex flex-col gap-4 items-center">
+      <app-offer-preview [offer]="offerPreview" />
+
+      <app-offer-progress
+        [completedFields]="completedFields"
+        [totalFields]="totalFields"
+      />
+    </div>
+  </div>
+</main>
