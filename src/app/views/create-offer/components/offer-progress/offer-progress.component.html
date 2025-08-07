@@ -1,0 +1,15 @@
+<div class="w-full border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
+  <div class="flex flex-row gap-2 justify-center items-center">
+    <i class="pi pi-check-circle mt-1 text-green-500"></i>
+    <h4 class="text-lg font-semibold">Progreso de tu oferta</h4>
+  </div>
+
+  <div class="flex flex-row gap-2 items-center">
+    <p>Campos completados</p>
+    <span>{{ completedFields }} / {{ totalFields }}</span>
+  </div>
+
+  <div class="w-full bg-gray-200 rounded-full h-2.5">
+    <div class="bg-blue-500 h-2.5 rounded-full transition-all duration-300" [style.width.%]="progressPercent"></div>
+  </div>
+</div>

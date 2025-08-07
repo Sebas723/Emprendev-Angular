@@ -1,165 +1,42 @@
 <main class="w-full flex flex-col justify-center items-center py-4 fluid-horizontal-padding">
-    <h1 class="text-3xl font-semibold">Crear oferta</h1>
-    <p class="text-gray-500">Completa el formulario con ayuda de nuestros consejos</p>
+  <h1 class="text-3xl font-semibold">Crear oferta</h1>
+  <p class="text-gray-500">Completa el formulario con ayuda de nuestros consejos</p>
 
-    <div class="w-full flex flex-row gap-4 mt-10">
-
-        <!-- Contenedor de consejos y recordatorios  -->
-        <div class="w-3/12 flex flex-col gap-4">
-            @for(infoFormCardItem of infoFormCard; track $index) {
-                <app-info-card [infoCardData]="infoFormCardItem"></app-info-card>
-            }
-        </div>
-
-        <!-- Contenedor del formulario  -->
-        <div class="w-6/12 border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
-            <div>
-                <h4 class="text-lg font-semibold">Informacion de la oferta</h4>
-                <p class="text-gray-500">
-                    Queremos ayudarte a crear una oferta atractiva. Asegúrate de llenar correctamente cada campo, 
-                    proporcionando datos claros y reales. ¡Una buena descripción genera más 
-                    interés!
-                </p>
-            </div>
-
-            <form [formGroup]="offerForm" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-4">
-
-                <!-- Imagenes de la oferta -->
-                <div>
-                    <label for="images" class="font-semibold text-base block mb-1">Imágenes de la oferta (máx. 4)</label>
-
-                    <label class="w-full flex flex-col justify-center items-center py-4 gap-2 border-2 border-dashed rounded-lg cursor-pointer bg-gray-100">
-                        <i class="pi pi-cloud-upload text-4xl text-gray-500"></i>
-                        <p class="text-gray-600">Haz click para subir imágenes</p>
-                        <p class="text-gray-600">PNG, JPG, JPEG</p>
-                        <input
-                        type="file"
-                        id="images"
-                        class="hidden"
-                        accept="image/png, image/jpeg"
-                        multiple
-                        (change)="handleImageUpload($event)"
-                        />
-                    </label>
-
-                    @if(previewUrls.length){
-                        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-                            @for(img of previewUrls; track $index) {
-                            <div class="relative group">
-                                <img [src]="img" alt="Vista previa" class="w-full h-auto object-cover rounded" />
-                                <div class="absolute inset-0 bg-red-400 bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 rounded flex items-center cursor-pointer justify-center" (click)="removeImage($index)">
-                                    <span class="text-white font-semibold">Eliminar</span>
-                                </div>
-                            </div>
-                            }
-                        </div>
-                    }
-                </div>
-                
-                <div>
-                    <label for="title" class="font-semibold text-base">Título de la oferta *</label>
-                    <input type="text" formControlName="title" id="title" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta">
-                    <span class="input-error-message w-full">
-                        @if(offerForm.get("title")?.invalid && offerForm.get("title")?.touched) {
-                            @if(offerForm.get("title")?.hasError("required")) {
-                                Este campo es obligatorio
-                            }
-                        }
-                    </span>
-                </div>
-
-                <div>
-                    <label for="description" class="font-semibold text-base">Descripción de la oferta *</label>
-                    <textarea id="description" formControlName="description" rows="10" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"></textarea>
-                    <span class="input-error-message w-full">
-                        @if(offerForm.get("description")?.invalid && offerForm.get("description")?.touched) {
-                            @if(offerForm.get("description")?.hasError("required")) {
-                                Este campo es obligatorio
-                            }
-                        }
-                    </span>
-                </div>
-
-                <!-- Tags de la oferta -->
-                <div>
-                    <label for="tecnologies" class="font-semibold text-base">Tecnologias para la oferta</label>
-                    <input type="text" id="tecnology" (keyup)="search()" [(ngModel)]="searchTecnology" [ngModelOptions]="{standalone: true}" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa las tecnologias">
-                    
-                    <ul class="rounded-lg mt-2 [&>li]:cursor-pointer">
-                        @for(tecnology of filteredTecnologies; track tecnology) {
-                            <li class="px-2 py-2 hover:bg-blue-50 border-x" (click)="selectTecnology(tecnology)">{{tecnology.name}}</li>
-                        }
-                    </ul>
-                    
-                    <div class="w-full flex flex-wrap gap-3">
-                        @for(item of selectedTecnologies; track item.name) {
-                            <span class="text-sm inline-block mt-2 bg-green-200 px-2 py-1 rounded-lg cursor-pointer" (click)="removeTecnology(item)">{{ item.name }}
-                                <i class="pi pi-times-circle text-[12px]"></i>
-                            </span>
-                        }
-                    </div>
-                </div>
-
-                <!-- Remuneración -->
-                <div class="flex flex-row justify-between gap-4 items-center">
-                    <div class="w-full">
-                        <label for="pay" class="font-semibold text-base">Remuneración *</label>
-                        <input type="text" formControlName="pay" id="pay" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa la remuneración">
-                    </div>
-
-                    <div class="w-full">
-                        <label for="pay" class="font-semibold text-base">Vacantes *</label>
-                        <input type="text" formControlName="vacancies" id="pay" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa las vacantes">
-                    </div>
-                </div>
-                
-                <button class="bg-black py-2 px-5 mt-2 rounded-xl font-bold text-white">Ingresar</button>
-            </form>
-        </div>
-    
-
-        <div class="w-3/12 flex flex-col gap-4 items-center">
-            
-            <!-- Vista previa de la oferta -->
-            <div class="w-full h-auto">     
-                <div>
-                    <img [src]="offerPreview.images[0] || 'images/img2.jpg'" alt="" class="w-full h-full object-cover rounded-t-xl">
-                </div>
-
-                <div class="border rounded-b-xl"> 
-                    <div class="w-full flex flex-col gap-1 py-3 px-4">
-                        <h4 class="font-semibold text-xl break-words line-clamp-3">{{ offerPreview.title || "Desarrollador Frontend Angular Jr." }}</h4>
-                        <span class="text-gray-400 break-words line-clamp-3">{{ offerPreview.subtitle || "TechSolutions S.A.S" }}</span>
-                        <p class="break-words line-clamp-5">{{ offerPreview.description || "Estamos buscando un desarrollador con experiencia básica en Angular y TypeScript para unirse a nuestro equipo de tecnología. Se valoran conocimientos en consumo de APIs REST, uso de Git y metodologías ágiles." }}</p>
-                    </div>
-
-                    <div class="w-full h-8/12 flex gap-1 py-3 px-4">
-                        <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Progreso de la oferta -->
-            <div class="w-full border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
-                <div class="flex flex-row gap-2 justify-center items-center ">
-                    <i class="pi pi-check-circle mt-1 text-green-500"></i>
-                    <h4 class="text-lg font-semibold">Progreso de tu oferta</h4>
-                </div>
-
-                <div class="flex flex-row gap-2 items-center">
-                    <p>Campos completados</p>
-                    <span>{{ completedFields }} / {{ totalFields }}</span>
-                </div>
-
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                    <div
-                        class="bg-blue-500 h-2.5 rounded-full transition-all duration-300"
-                        [style.width.%]="(completedFields / totalFields) * 100"
-                    ></div>
-                </div>
-
-            </div>
-
-        </div>
+  <div class="w-full flex flex-row gap-4 mt-10">
+     <!-- Consejos y recordatorios  -->
+    <div class="w-3/12 flex flex-col gap-4">
+      @for (infoFormCardItem of infoFormCard; track $index) {
+        <app-info-card [infoCardData]="infoFormCardItem"></app-info-card>
+      }
     </div>
+
+    <!-- Formulario (componente hijo)  -->
+    <div class="w-6/12 border rounded-xl px-8 py-4 flex flex-col items-start gap-4">
+
+      <app-offer-form
+        [form]="offerForm"
+        [previewUrls]="previewUrls"
+        [selectedTecnologies]="selectedTecnologies"
+        [filteredTecnologies]="filteredTecnologies"
+        [searchTecnology]="searchTecnology"
+        (searchTecnologyChange)="searchTecnology = $event"
+        (search)="search()"
+        (selectTecnology)="selectTecnology($event)"
+        (removeTecnology)="removeTecnology($event)"
+        (uploadImages)="handleImageUpload($event)"
+        (removeImageIndex)="removeImage($event)"
+        (submitForm)="onSubmit()"
+      />
+    </div>
+
+    <!-- Lateral derecho  -->
+    <div class="w-3/12 flex flex-col gap-4 items-center">
+      <app-offer-preview [offer]="offerPreview" />
+
+      <app-offer-progress
+        [completedFields]="completedFields"
+        [totalFields]="totalFields"
+      />
+    </div>
+  </div>
 </main>

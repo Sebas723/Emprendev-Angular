@@ -1,0 +1,34 @@
+<div class="w-full">
+  <div class="w-full overflow-hidden rounded-t-xl">
+    <div class="aspect-[16/9]">
+      <img
+        [src]="offer?.images?.[0] || fallbackImage"
+        alt="Vista previa oferta"
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+
+  <div class="border rounded-b-xl">
+    <div class="w-full flex flex-col gap-1 py-3 px-4">
+      <h4 class="font-semibold text-xl break-safe clamp-3">
+        {{ offer.title || 'Desarrollador Frontend Angular Jr.' }}
+      </h4>
+
+      <span class="text-gray-400 break-safe clamp-2">
+        {{ offer.subtitle || 'TechSolutions S.A.S' }}
+      </span>
+
+      <p class="break-safe clamp-5">
+        {{
+          offer.description ||
+            'Estamos buscando un desarrollador con experiencia básica en Angular y TypeScript para unirse a nuestro equipo de tecnología. Se valoran conocimientos en consumo de APIs REST, uso de Git y metodologías ágiles.'
+        }}
+      </p>
+    </div>
+
+    <div class="w-full flex gap-1 py-3 px-4">
+      <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Ver detalles</button>
+    </div>
+  </div>
+</div>
