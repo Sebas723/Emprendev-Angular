@@ -7,16 +7,15 @@ import { SidebarInfoCardComponent } from '../../../../shared/components/sidebar-
 import { TemplateCard } from '../../../../interfaces/TemplateCard';
 
 @Component({
-  selector: 'app-developer-card',
+  selector: 'app-offer-card',
   imports: [SidebarInfoCardComponent],
-  templateUrl: './developer-card.component.html',
-  styleUrl: './developer-card.component.css'
+  templateUrl: './offer-card.component.html',
+  styleUrl: './offer-card.component.css'
 })
-export class DeveloperCardComponent {
-
+export class OfferCardComponent {
   @ViewChild(SidebarInfoCardComponent) sidebarInfoCard!: SidebarInfoCardComponent;
 
-  developerCard: TemplateCard[] = [
+  offerCard: TemplateCard[] = [
     {id: 1, image: 'images/img2.jpg', title: 'Advanced card', subtitle: 'Lorem ipsum dolor sit', description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur'},
     {id: 2, image: 'images/img2.jpg', title: 'Advanced card', subtitle: 'Lorem ipsum dolor sit', description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur'},
     {id: 3, image: 'images/img2.jpg', title: 'Advanced card', subtitle: 'Lorem ipsum dolor sit', description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione natus molestiae provident itaque possimus iusto eum perferendis, id corrupti voluptate beatae, Lorem ipsum dolor sit amet, consectetur'},

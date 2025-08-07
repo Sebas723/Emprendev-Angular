@@ -1,4 +1,4 @@
-export interface DeveloperCard {
+export interface TemplateCard {
     id: number;
     image: string;
     title: string;
