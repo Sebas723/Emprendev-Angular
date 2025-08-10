@@ -1,0 +1,9 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-gap: 12px;
+}
+
+.box-area div:last-child {
+    grid-column: 1 / -1;
+}
