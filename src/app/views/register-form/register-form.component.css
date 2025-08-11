@@ -1,0 +1,16 @@
+.fluid-horizontal-padding-register-section {
+  padding-left: clamp(1rem, 1vw, 1rem);
+  padding-right: clamp(1rem, 1vw, 1rem);
+}
+
+.input-error-message {
+  font-size: 0.875rem;
+  color: #dc2626;
+  min-height: 1.25rem;
+}
+
+@media (max-width: 1000px) {
+  .img-container{
+    display: none;
+  }
+}

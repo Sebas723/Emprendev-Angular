@@ -1,0 +1,33 @@
+<main class="w-full h-screen flex flex-col items-center gap-2 fluid-horizontal-padding-register-section py-3">
+
+    <div class="h-auto absolute top-2 left-2 cursor-pointer flex flex-row items-center gap-3 rounded-xl px-4 py-3 text-gray-700 hover:bg-black hover:text-white" [routerLink]="['/home']">
+        <i class="pi pi-arrow-left text-base"></i>
+        <p class="text-lg font-medium">Volver</p>
+    </div>
+
+    <div class="mt-auto items-center bg-white shadow-2xl rounded-3xl flex">        
+        <div class="w-full h-full bg-gray-100 flex flex-col justify-center items-center py-6 rounded-3xl rounded-br-[500px] rounded-tr-[0px] img-container">
+            <div class="flex flex-col items-center px-10 text-gray-700">
+                <h1 class="text-3xl font-semibold">Hola mundo</h1>
+                <p>rum animi rem corrupti voluptate nostrum reprehenderit veniam</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <img src="images/img-dev.webp" alt="">
+            </div>
+        </div>
+
+        <div class="w-full flex flex-col items-center rounded-r-2xl py-8 px-8">
+
+            <!-- Formulario de registro -->
+            <app-form></app-form>
+
+        </div>
+    </div>
+
+    <div class="w-full h-auto mt-auto flex gap-1 justify-end">
+        <img src="icons/Logo.svg" alt="logo" class="w-10 h-10 cursor-pointer">
+        <p class="text-3xl font-bold">Emprendev</p>
+    </div>
+    
+</main>

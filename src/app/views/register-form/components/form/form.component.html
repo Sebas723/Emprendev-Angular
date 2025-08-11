@@ -1,0 +1,77 @@
+<div class="flex flex-col items-center">
+    <h1 class="text-3xl font-semibold">Formulario de Registro</h1>
+    <p>
+        Registrate e inicia sesion para disfrutar de todo lo que ofrecemos
+    </p>
+</div>
+
+<div class="mx-auto w-full max-w-2xl space-y-6 py-6 px-4">
+   <!-- Numero del steper -->
+  <ol class="flex px-4 justify-between">
+    @for( stepItem of steps; track e; let e = $index) {
+        <li class="flex items-center gap-2">
+            <button
+                type="button"
+                (click)="goTo(e)"
+                [class]="[
+                'flex py-2 px-4 items-center justify-center rounded-full border text-sm font-medium transition',
+                e < current() ? 'border-emerald-600 bg-emerald-600 text-white'
+                : e === current() ? 'border-emerald-600 text-emerald-700'
+                : 'border-gray-300 text-gray-400'
+                ].join(' ')"
+                [attr.aria-current]="e === current() ? 'step' : null"
+                [disabled]="!canGoTo(e) && e !== current()"
+                [title]="!canGoTo(e) && e !== current() ? 'Completa pasos previos' : 'Ir al paso ' + (e + 1)"
+            >
+                <span *ngIf="e < current(); else num">{{ '✓' }}</span>
+                <ng-template #num>{{ e + 1 }}</ng-template>
+            </button>
+        </li>
+    }
+  </ol>
+
+
+<form (ngSubmit)="finish()" [formGroup]="form" class="space-y-6">
+  @for (step of steps; track i; let i = $index) {
+    <div [hidden]="i !== current()">
+      @for (field of step.fields; track j; let j = $index) {
+        <div class="mb-4">
+          <label [for]="field.key" class="block text-sm font-medium text-gray-700">
+            {{ field.label }}
+          </label>
+
+          <!-- Input normal -->
+          <input
+            *ngIf="field.type !== 'select'"
+            [id]="field.key"
+            [type]="field.type || 'text'"
+            [placeholder]="field.placeholder || ''"
+            [formControlName]="field.key"
+            class="w-full rounded-lg border border-gray-300 px-2 py-2 mt-1"
+          />
+
+          <!-- Select -->
+          <select
+            *ngIf="field.type === 'select'"
+            [id]="field.key"
+            [formControlName]="field.key"
+            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+          >
+            <option value="">Selecciona una opción</option>
+            <option *ngFor="let opt of field.options" [value]="opt">{{ opt }}</option>
+          </select>
+
+          <p class="mt-1 text-sm text-red-600" *ngIf="errorFor(field.key) as err">{{ err }}</p>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Botones -->
+  <div class="flex justify-between">
+    <button type="button" class="py-2 px-5 border rounded-xl font-bold text-gray-500" [ngClass]="{'hidden': current() === 0}" (click)="prev()">Atrás</button>
+    <button type="button" class="bg-black py-2 px-5 rounded-xl font-bold text-white" (click)="next()" *ngIf="current() < steps.length - 1">Siguiente</button>
+    <button type="submit" class="bg-black py-2 px-5 rounded-xl font-bold text-white" *ngIf="current() === steps.length - 1">Finalizar</button>
+  </div>
+</form>
+</div>
