@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './views/home-page/home-page.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { RegisterFormComponent } from './views/register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CatalogOfferComponent } from './views/catalog-offer/catalog-offer.component';
 import { CatalogDevsComponent } from './views/catalog-devs/catalog-devs.component';
