@@ -1,0 +1,10 @@
+@media (max-width: 1300px) {
+  .img-container{
+    display: none;
+  }
+}
+
+.fluid-horizontal-padding-register-section {
+  padding-left: clamp(1rem, 1vw, 1rem);
+  padding-right: clamp(1rem, 1vw, 1rem);
+}

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { RegisterFormComponent } from './views/register-form/register-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './views/login-form/login-form.component';
 import { CatalogOfferComponent } from './views/catalog-offer/catalog-offer.component';
 import { CatalogDevsComponent } from './views/catalog-devs/catalog-devs.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
@@ -13,11 +13,11 @@ export const routes: Routes = [
         component: HomePageComponent,
     },
     {
-        path: 'register',
+        path: 'register-form',
         component: RegisterFormComponent,
     },
     {
-        path: 'login',
+        path: 'login-form',
         component: LoginFormComponent,
     },
     {
