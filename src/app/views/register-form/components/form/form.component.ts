@@ -8,17 +8,12 @@ import { minAgeValidator } from '../../../../shared/form-validators/age-validato
 import { matchFieldsValidator } from '../../../../shared/form-validators/match-fields-validator';
 import { PATTERNS } from '../../../../shared/form-validators/pattern-validators/pattern';
 
-type Field = {
-  key: string;
-  label: string;
-  placeholder?: string;
-  type?: string;
-  options?: string[]; // Para selects
-};
+// interfaces
+import { InputFormTemplate } from '../../../../interfaces/InputFormTemplate';
 
 type Step = {
   label: string;
-  fields: Field[];
+  fields: InputFormTemplate[];
 };
 
 @Component({
