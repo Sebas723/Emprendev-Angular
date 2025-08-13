@@ -20,5 +20,5 @@ import { DeveloperCardComponent } from './components/developer-card/developer-ca
   styleUrl: './catalog-devs.component.css'
 })
 export class CatalogDevsComponent {
-  
+
 }
