@@ -17,14 +17,14 @@
                         <i class="pi pi-times text-base mt-1 text-gray-700 cursor-pointer hover:bg-blue-50 rounded-full py-1 px-2" (click)="closeMenuFilter(item.id)"></i>
                     </div>
 
-                    @for(filterItem of item.options; track $index) {
-                        <li class="cursor-pointer p-3 hover:bg-blue-50" (click)="onTechnologiesSelect(filterItem); menuFilterOpenIndex = null">{{ filterItem }}</li>
+                    @for(filterItem of availableTechnologies; track $index) {
+                        <li class="cursor-pointer p-3 hover:bg-blue-50" (click)="onTechnologiesSelect(filterItem);">{{ filterItem }}</li>
                     }
 
                     @for(filterItem of selectedTechnologies; track $index) {
-                        <div class="flex flex-row justify-between items-center px-3 py-2 bg-blue-50" (click)="removeTechnology(filterItem);">
-                            <li class="cursor-pointer p-3" (click)="onTechnologiesSelect(filterItem); menuFilterOpenIndex = null">{{ filterItem }}</li>
-                            <i class="pi pi-times text-base mt-1 text-gray-700 cursor-pointer rounded-full py-1 px-2"></i>
+                        <div class="flex flex-row justify-between items-center px-3 py-2 bg-blue-50">
+                            <li class="cursor-pointer p-3" (click)="onTechnologiesSelect(filterItem);">{{ filterItem }}</li>
+                            <i class="pi pi-times text-base mt-1 text-gray-700 cursor-pointer rounded-full py-1 px-2" (click)="removeTechnology(filterItem)"></i>
                         </div>
                     }
                 </ul>

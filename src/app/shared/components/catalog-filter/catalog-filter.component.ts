@@ -32,20 +32,19 @@ export class CatalogFilterComponent {
   }
 
   onTechnologiesSelect(tech: string): void {
-    // Alternar selección
     if (this.selectedTechnologies.includes(tech)) {
       this.selectedTechnologies = this.selectedTechnologies.filter(t => t !== tech);
     } else {
       this.selectedTechnologies.push(tech);
-
-      // Esta linea de codigo se encarga de eliminar el tecnología seleccionada de la lista de opciones para que no aparezca dos veces
-      for (const tecnology of this.selectedTechnologies) {
-        this.filter[0].options = this.filter[0].options.filter((item) => item !== tecnology);
-      }
     }
 
     this.filterService.setFilters({ technology: this.selectedTechnologies });
     console.log(this.filterService.getFilters());
+  }
+
+  // Opciones disponibles dinámicamente sin modificar las originales
+  get availableTechnologies(): string[] {
+    return this.filter[0].options.filter(opt => !this.selectedTechnologies.includes(opt));
   }
 
   removeTechnology(tech: string): void {

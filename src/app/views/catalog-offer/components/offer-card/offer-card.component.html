@@ -1,6 +1,6 @@
 <div class="w-full h-full gap-6 box-area">
-    @for(offerCardItem of offerCard; track offerCardItem.id) {
-        <div class="w-full h-auto"> 
+    @for(offerCardItem of filteredCards; track offerCardItem.id) {
+        <div class="h-auto"> 
             <div class="w-full">
                 <img [src]="offerCardItem.image" alt="" class="w-full h-full object-cover rounded-t-2xl">
             </div>
