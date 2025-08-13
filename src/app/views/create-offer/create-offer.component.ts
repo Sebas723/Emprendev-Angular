@@ -143,6 +143,7 @@ export class CreateOfferComponent implements OnInit {
     this.filteredTecnologies = tecnologies.filter((item) =>
       item.name.toUpperCase().includes(this.searchTecnology.toLocaleUpperCase()),
     );
+    
     for (const tecnology of this.selectedTecnologies) {
       this.filteredTecnologies = this.filteredTecnologies.filter((item) => item.id !== tecnology.id);
     }
