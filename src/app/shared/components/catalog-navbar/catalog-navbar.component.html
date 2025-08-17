@@ -11,9 +11,9 @@
     </div>
 
     <div class="w-full flex items-center justify-end">
-        <input type="search" placeholder="Buscar" class="w-6/12 py-2 px-2 rounded-l-lg bg-gray-100">
+        <input [(ngModel)]="searchText" type="search" placeholder="Buscar" class="w-6/12 py-2 px-2 rounded-l-lg bg-gray-100">
         
-        <button>
+        <button (click)="onSearchInput(searchText)">
             <i class="pi pi-search text-xl text-white py-1 px-2 rounded-r-lg" style="background-color: rgb(20, 20, 20)"></i>
         </button>   
     </div>
