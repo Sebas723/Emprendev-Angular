@@ -1,36 +1,114 @@
-<div class="sidebar">
-    <div class="sidebar-header">
-        <img src="icons/Logo.svg" alt="logo">
-        <h2>Emprendev</h2>
-    </div>
+@if(screenWidth > 1279) {
+    <!-- Desktop Version -->
+    <div class="group sticky top-0 left-0 h-screen w-20 flex flex-col overflow-x-hidden bg-neutral-900 p-5 transition-all duration-500 hover:w-72">
+        <!-- Header -->
+        <div class="flex items-center">
+            <img src="icons/Logo.svg" alt="logo" class="w-10 rounded-full">
+            <h2 class="ml-6 text-xl font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                Emprendev
+            </h2>
+        </div>
 
-    <ul class="sidebar-links">
-        @for(sidebarItem of sidebarItems; track sidebarItem.id) {
-            <h4>
-                <span>{{ sidebarItem.title }}</span>
-                <div class="menu-separator"></div>
-            </h4>
+        <!-- Links -->
+        <ul class="mt-5 list-none h-4/5 overflow-y-auto scrollbar-width">
+            @for(sidebarItem of sidebarItems; track sidebarItem.id) {
+                <h4 class="relative my-2 font-medium text-white whitespace-nowrap">
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {{ sidebarItem.title }}
+                    </span>
+                    <div class="absolute left-0 top-1/2 w-full h-px bg-white origin-right scale-x-100 transition duration-500 group-hover:scale-x-0"></div>
+                </h4>
 
-            @for(item of sidebarItem.items; track $index) {
-                <li>
-                    <a [routerLink]="item.route">
-                        <span>
+                @for(item of sidebarItem.items; track $index) {
+                    <li>
+                        <a [routerLink]="item.route"
+                            class="flex items-center gap-5 text-gray-300 font-medium px-1 py-4 whitespace-nowrap no-underline transition-all duration-400 hover:bg-white/20 hover:text-white hover:rounded-lg group-hover:px-2 group-hover:py-4">
                             <i [class]="item.icon" class="text-2xl"></i>
-                        </span>{{ item.text }}
-                    </a>
-                </li>
+                            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">{{ item.text }}</span>
+                        </a>
+                    </li>
+                }
             }
-        }
-    </ul>
+        </ul>
 
-    <div class="user-account">
-        <div class="user-profile">
-            <img src="images/img2.jpg" alt="" class="w-14 h-14 rounded-full object-cover">
-            <div class="user-detail">
-                <h3>Eva Murphy</h3>
-                <span>Web Developer</span>
+        <!-- User Account -->
+        <div class="mt-auto -ml-2 flex items-start justify-start py-4 px-0 transition-all duration-500 hover:bg-white/20 hover:rounded hover:px-2 hover:py-4 group-hover:px-2 group-hover:bg-white/20 group-hover:rounded group-hover:py-4">
+            <div class="user-profile flex items-center text-gray-300">
+                <img src="images/img2.jpg" alt="" class="w-14 h-14 rounded-full object-cover">
+                <div class="user-detail ml-5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-base font-semibold text-white">Eva Murphy</h3>
+                    <span class="text-sm font-semibold block mt-0">Web Developer</span>
+                </div>
             </div>
         </div>
     </div>
 
-</div>
+} @else {
+    <!-- Mobile Toggle Button -->
+    <div class="block xl:hidden fixed top-5 left-10">
+        <button class="text-2xl rounded-lg border-none cursor-pointer" (click)="toggleSidebar()">
+            <i class="pi pi-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="group fixed top-0 left-0 h-screen w-72 flex flex-col overflow-x-hidden bg-neutral-900 p-5 transition-all duration-500 z-30" 
+         [class.-translate-x-full]="!isSidebarOpen"
+         [class.translate-x-0]="isSidebarOpen">
+        
+        <!-- Improved mobile header with consistent styling and better close button -->
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center">
+                <img src="icons/Logo.svg" alt="logo" class="w-10 rounded-full">
+                <h2 class="ml-6 text-xl font-semibold text-white transition-opacity duration-500">
+                    Emprendev
+                </h2>
+            </div>
+            <button class="text-xl text-white rounded-lg border-none cursor-pointer px-2 py-1 mt-1 hover:bg-white/20" (click)="toggleSidebar()">
+                <i class="pi pi-times"></i>
+            </button>
+        </div>
+
+        <!-- Added consistent section titles with decorative lines for mobile -->
+        <ul class="mt-0 list-none h-4/5 overflow-y-auto scrollbar-width">
+            @for(sidebarItem of sidebarItems; track sidebarItem.id) {
+                <h4 class="relative my-2 font-medium text-white whitespace-nowrap">
+                    <span class="transition-opacity duration-500">
+                        {{ sidebarItem.title }}
+                    </span>
+                </h4>
+
+                @for(item of sidebarItem.items; track $index) {
+                    <li>
+                        <a [routerLink]="item.route"
+                            class="flex items-center gap-5 text-gray-300 font-medium px-2 py-4 whitespace-nowrap rounded-lg no-underline transition-all duration-400 hover:bg-white/20 hover:text-white"
+                            (click)="toggleSidebar()">
+                            <i [class]="item.icon" class="text-2xl"></i>
+                            <span>{{ item.text }}</span>
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+
+        <!-- Fixed user account section to only show background on hover -->
+        <div class="mt-auto flex items-start justify-start py-4 px-2 rounded-lg transition-all duration-400 bg-white/20">
+            <div class="user-profile flex items-center text-gray-300">
+                <img src="images/img2.jpg" alt="" class="w-14 h-14 rounded-full object-cover">
+                <div class="user-detail ml-5 whitespace-nowrap">
+                    <h3 class="text-base font-semibold text-white">Eva Murphy</h3>
+                    <span class="text-sm font-semibold block mt-0">Web Developer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Improved overlay with better transition -->
+    @if(isSidebarOpen){
+        <div class="fixed inset-0 bg-black/50 z-20 transition-all duration-300 backdrop-blur-sm"
+             [class.opacity-0]="!isSidebarOpen"
+             [class.opacity-100]="isSidebarOpen"
+             (click)="toggleSidebar()">
+        </div>
+    }
+}
