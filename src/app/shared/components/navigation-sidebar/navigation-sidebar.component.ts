@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // Interfaces
 import { NavigationSidebar } from '../../../interfaces/NavigationSidebar';
 
 @Component({
   selector: 'app-navigation-sidebar',
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './navigation-sidebar.component.html',
   styleUrl: './navigation-sidebar.component.css'
 })
 export class NavigationSidebarComponent {
+
+  screenWidth: number = window.innerWidth;
+  
+  isSidebarOpen = false;
 
   // Sidebar items
   sidebarItems: NavigationSidebar[] = [
@@ -40,4 +45,14 @@ export class NavigationSidebarComponent {
       ],
     },
   ]
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.screenWidth = (event.target as Window).innerWidth;
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    console.log(this.isSidebarOpen, 'me ejecute');
+  }
 }
