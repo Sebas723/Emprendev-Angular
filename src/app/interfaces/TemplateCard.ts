@@ -1,7 +1,11 @@
 export interface TemplateCard {
     id: number;
-    image: string;
+    role?: string;
+    image: string[];
     title: string;
     subtitle: string;
     description: string;
+    tecnologies?: string[];
+    pay?: string;
+    vacancies?: string;
 }
