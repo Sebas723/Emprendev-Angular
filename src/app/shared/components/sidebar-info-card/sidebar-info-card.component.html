@@ -1,10 +1,176 @@
 <!-- Sidebar dinamico para las tarjetas -->
 <div class="relative">
-    <div class="fixed top-0 right-0 w-4/12 h-screen bg-white shadow-2xl transition-transform duration-300 z-30" [class.translate-x-full]="!isSidebarOpen"
+    <div class="fixed flex flex-col gap-8 top-0 right-0 xl:w-4/12 lg:w-6/12 sm:w-8/12 py-4 px-5 h-screen bg-white shadow-2xl transition-transform duration-300 z-30 overflow-y-auto" [class.translate-x-full]="!isSidebarOpen"
     [class.translate-x-0]="isSidebarOpen"
     >
+        @if( infoCardData.role === 'developer') {
+            <!-- Header-->
+            <div class="w-full flex flex-row justify-between">
+                <h1 class="text-2xl font-bold">Información detallada</h1>
+                <button class="text-xl border-none cursor-pointer px-2 py-1 rounded-full hover:bg-gray-100" (click)="sidebarState()">
+                    <i class="pi pi-times"></i>
+                </button>
+            </div>
 
-    <button (click)="isSidebarOpen = false">Cerrar</button>
+            <!-- Content -->
+            <div class="w-full flex flex-row items-center gap-5">
+                <div class="w-32 h-32 rounded-full border-4 border-gray-300">
+                    <img [src]="infoCardData.image[0]" alt="" class="w-full h-full object-cover rounded-full">
+                </div>
+
+                <div class="flex flex-col">
+                    <h3 class="text-xl font-semibold">{{ infoCardData.title }}</h3>
+                    <span class="text-gray-400">{{ infoCardData.subtitle }}</span>
+                </div>
+            </div>
+
+            <div class="w-full flex flex-col gap-3 [&_span]:font-semibold ">
+                <div class="flex flex-col gap-3">
+
+                    <h4 class="text-xl font-semibold">Datos personales</h4>
+
+                    <div class="w-full box-area">
+        
+                        <div>
+                            <span>Telefono</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Direccion</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Correo</span>
+                            <p>ExampleGmail.com</p>
+                        </div>
+        
+                        <div class="description">
+                            <span>Descripcion</span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, veniam minus sed magnam est corrupti dolore repudiandae, assumenda mollitia possimus veritatis recusandae sunt deserunt maiores placeat molestias. Vero praesentium assumenda voluptatum earum autem delectus sed natus quidem minus quasi quo, beatae saepe et. Neque quae quasi architecto officiis doloribus fugiat?</p>
+                        </div>
+                        <div>
+                            <span>Remuneracion esperada</span>
+                            <p>{{ infoCardData.pay }}</p>
+                        </div>
+                        <div>
+                            <span>Tecnologias</span>
+                            <p>{{ infoCardData.tecnologies?.join(', ') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex flex-col gap-3">
+                    <h4 class="text-xl font-semibold">Experiencia laboral</h4>
+
+                    <div class="w-full box-area">
+                        <div>
+                            <span>Cargo</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Empresa</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Fecha de inicio</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Fecha de finalizacion</span>
+                            <p>Example</p>
+                        </div>
+                        <div class="description">
+                            <span>Descripcion</span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, veniam minus sed magnam est corrupti dolore repudiandae, assumenda mollitia possimus veritatis recusandae sunt deserunt maiores placeat molestias. Vero praesentium assumenda voluptatum earum autem delectus sed natus quidem minus quasi quo, beatae saepe et. Neque quae quasi architecto officiis doloribus fugiat?</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    
+                    <h4 class="text-xl font-semibold">Educacion</h4>
+
+                    <div class="w-full box-area">
+                        <div>
+                            <span>Universidad</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Carrera</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Fecha de inicio</span>
+                            <p>Example</p>
+                        </div>
+                        <div>
+                            <span>Fecha de finalizacion</span>
+                            <p>Example</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="w-full flex flex-row gap-6">
+                <button class="w-full py-2 px-6 border rounded-2xl" (click)="sidebarState()">Cerrar</button>
+                <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Contactar</button>
+            </div>
+        }@else {
+            <!-- Header-->
+            <div class="w-full flex flex-row justify-between">
+                <h1 class="text-2xl font-bold">Información detallada</h1>
+                <button class="text-xl border-none cursor-pointer px-2 py-1 rounded-full hover:bg-gray-100" (click)="sidebarState()">
+                    <i class="pi pi-times"></i>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="w-full box-area [&_span]:font-semibold ">
+                <div>
+                    <span>Titulo</span>
+                    <p>{{ infoCardData.title }}</p>
+                </div>
+                <div>
+                    <span>Empresa</span>
+                    <p>{{ infoCardData.subtitle }}</p>
+                </div>
+                <div>
+                    <span>Remuneracion</span>
+                    <p>{{ infoCardData.pay }}</p>
+                </div>
+                <div>
+                    <span>Tecnologias</span>
+                    <p>{{ infoCardData.tecnologies?.join(', ') }}</p>
+                </div>
+
+                
+                <div id="description">
+                    <span>Descripcion</span>
+                    <p>{{ infoCardData.description }}</p>
+                </div>
+            </div>
+
+            <div class="w-full">
+                <span class="font-semibold">Imagenes</span>
+            
+                <div class="images-box-area [&>img]:rounded-lg mt-2">
+                    @for (img of infoCardData.image; track $index) {
+                        <img [src]="img" alt="">
+                    }
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="w-full flex flex-row gap-6">
+                <button class="w-full py-2 px-6 border rounded-2xl" (click)="sidebarState()">Cerrar</button>
+                <button class="w-full py-2 px-6 border rounded-2xl bg-[rgb(20,20,20)] text-white">Aplicar</button>
+            </div>
+        }
+    
     </div>
 
     <div
