@@ -17,6 +17,7 @@ interface CardItem {
 export class HeroSectionComponent implements AfterViewInit {
 
   @ViewChild('textContainer') textContainer!: ElementRef<HTMLElement>;
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
 
   //Variable para la renderizaciones de las tarjetas TI\
   cards: CardItem[] = [
@@ -31,7 +32,7 @@ export class HeroSectionComponent implements AfterViewInit {
   ]
 
   // Variable para la animación de las letras
-  words: string[] = ['Hola', 'Mundo', 'Frontend', 'Animación'];
+  words: string[] = ['Bienvenido', 'Descubre', 'Crece', 'Innova', 'Construye'];
   wordIndex: number = 0;
 
   // Configuración de la animacion para las letras
@@ -40,8 +41,35 @@ export class HeroSectionComponent implements AfterViewInit {
   readonly animationDuration = 900;
   readonly visibleTime = 2000;
 
-  ngAfterViewInit(): void {
-    this.animateWord(this.words[this.wordIndex]);
+ngAfterViewInit(): void {
+  this.animateWord(this.words[this.wordIndex]);
+  this.initVideo();
+}
+
+  private initVideo(): void {
+    const video = this.videoElement.nativeElement;
+    
+    // Configurar propiedades del video
+    video.muted = true;
+    video.volume = 0;
+    video.playsInline = true;
+    
+    // Múltiples intentos de reproducción
+    const tryPlay = () => {
+      video.play()
+        .then(() => console.log('Video playing'))
+        .catch(() => {
+          // Reintentar después de un momento
+          setTimeout(tryPlay, 500);
+        });
+    };
+    
+    // Intentar cuando esté listo
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', tryPlay, { once: true });
+    }
   }
 
   private animateWord(word: string): void {
