@@ -1,149 +1,44 @@
-<div class="border px-8 py-4 flex flex-col items-start gap-4">
+<div class="flex flex-col px-3 gap-4">
 
-    <div class="w-full flex flex-col gap-2">
-        <h4 class="text-xl font-semibold">Formulario de edicion</h4>
-        <hr class="w-4/12 border-gray-400">
+    @for( updateFormItem of userUpdateForm; track updateFormItem.id) {
+
+        <div class="w-full flex flex-col px-4 py-4 gap-4 shadow-[0_0_2px_rgba(0,0,0,0.25)] rounded-lg">
+            <div class="flex flex-row items-center justify-between gap-2 cursor-pointer" (click)="toggleForm(updateFormItem.id)">
+    
+                <div class="flex gap-3 items-center">
+                    <i [class]="updateFormItem.icon" class="text-2xl"></i>
+                    <p class="text-xl font-semibold">{{ updateFormItem.title }}</p>
+                </div>
+    
+                <div>
+                    <i class="pi pi-angle-up text-xl transition-transform duration-500" [class.rotate-180]="!updateFormItem.state"></i>
+                </div>
+            </div>
+    
+            <form class="w-full" [class.hidden]="!updateFormItem.state">
+                <div class="box-area">
+                    <!-- Se me ocurrio hacer un formulario dinamico con varios condicionales para cada input, asi manejo mejor los tipos de inputs, los distintos formualrios y sus estilos especificos -->
+                    @for( inputItem of updateFormItem.formInputs; track $index) {
+                        @if(inputItem.type === 'text') {
+                            <div>
+                                <label class="font-semibold text-base">{{ inputItem.label }}</label>
+                                <input [type]="inputItem.type" [value]="inputItem.value || 'No registrado'" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"/>
+                            </div>
+                        }
+
+                        @if(inputItem.type === 'textarea') {
+                            <div>
+                                <label class="font-semibold text-base">{{ inputItem.label }}</label>
+                                <textarea [value]="inputItem.value || 'No registrado'" rows="10"  class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1"></textarea>
+                            </div>
+                        }
+                    }
+                </div>
+            </form>
+        </div>
+    }
+
+    <div class="w-full flex justify-end">
+        <button class="bg-black py-2 px-5 rounded-xl font-bold text-white">Guardar</button>
     </div>
-
-    <form action="" class="w-full">
-        <div class="box-area">
-            <!-- Primer Nombre -->
-            <div>
-                <label for="firstName" class="font-semibold text-base">Primer nombre *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Segundo Nombre -->
-            <div>
-                <label for="secondName" class="font-semibold text-base">Segundo nombre</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Primer apellido -->
-            <div>
-                <label for="firstSurname" class="font-semibold text-base">Primer apellido *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Segundo apellido -->
-            <div>
-                <label for="secondSurname" class="font-semibold text-base">Segundo apellido</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Fecha de nacimiento -->
-            <div>
-                <label for="birthDate" class="font-semibold text-base">Fecha de nacimiento *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Tipo de documento -->
-            <div>
-                <label for="docType" class="font-semibold text-base">Tipo de documento *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Numero de documento -->
-            <div>
-                <label for="docNum" class="font-semibold text-base">Numero de documento *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Telefono -->
-            <div>
-                <label for="phone" class="font-semibold text-base">Numero de telefono *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Direccion -->
-            <div>
-                <label for="phone" class="font-semibold text-base">Direccion</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Correo electronico -->
-            <div>
-                <label for="email" class="font-semibold text-base">Correo electronico *</label>
-                <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-            </div>
-
-            <!-- Descripción del perfil -->
-            <div>
-                <label for="description" class="font-semibold text-base">Descripción del perfil</label>
-                <textarea rows="10" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Describe la oferta"></textarea>
-            </div>
-        </div>
-
-        <!-- Experiencia Laboral -->
-        <div class="w-full flex flex-col gap-4">
-            <div class="w-full flex flex-col gap-2">
-                <h4 class="text-xl font-semibold">Experiencia Laboral</h4>
-                <hr class="w-4/12 border-gray-400">
-            </div>
-            <div class="box-area">
-                <!-- Cargo -->
-                <div>
-                    <label for="position" class="font-semibold text-base">Cargo</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Empresa -->
-                <div>
-                    <label for="company" class="font-semibold text-base">Empresa</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Fecha de inicio -->
-                <div>
-                    <label for="startDate" class="font-semibold text-base">Fecha de incio</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Segundo apellido -->
-                <div>
-                    <label for="endDate" class="font-semibold text-base">Fecha de finalizacion</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Descripción del cargo -->
-                <div>
-                    <label for="positionDescription" class="font-semibold text-base">Descripción del cargo</label>
-                    <textarea rows="10" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Describe la oferta"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <!-- Educacion -->
-        <div class="w-full flex flex-col gap-4">
-            <div class="w-full flex flex-col gap-2">
-                <h4 class="text-xl font-semibold">Educacion</h4>
-                <hr class="w-4/12 border-gray-400">
-            </div>
-            <div class="box-area">
-                <!-- Universidad -->
-                <div>
-                    <label for="university" class="font-semibold text-base">Universidad</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Carrera -->
-                <div>
-                    <label for="degree" class="font-semibold text-base">Carrera</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Fecha de inicio -->
-                <div>
-                    <label for="startDate" class="font-semibold text-base">Fecha de incio</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-
-                <!-- Fecha de finalizacion  -->
-                <div>
-                    <label for="endDate" class="font-semibold text-base">Fecha de finalizacion</label>
-                    <input type="text" class="w-full rounded-lg border border-gray-300 px-2 py-1 mt-1" placeholder="Ingresa el título de la oferta"/>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
