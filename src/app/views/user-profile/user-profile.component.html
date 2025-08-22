@@ -1,16 +1,14 @@
 <main class="w-full flex flex-row">
 
     <!-- Sidebar -->
-    <app-navigation-sidebar></app-navigation-sidebar>
+    <app-navigation-sidebar class="fixed"></app-navigation-sidebar>
 
-    <div class="w-full h-screen p-5 flex flex-col gap-2 overflow-y-auto">
-        <div class="w-full h-screen flex flex-row">
+    <div class="w-full flex flex-row xl:ml-20 px-5 py-3 gap-2 overflow-y-auto">
 
-            <!-- User Info -->
-            <app-user-info class="w-7/12"></app-user-info>
-            
-            <!-- User Update Form -->
-            <app-user-update-form class="w-full"></app-user-update-form>
-        </div>
+        <!-- User Info -->
+        <app-user-info class="w-full md:w-full xl:w-7/12 mb-10"></app-user-info>
+        
+        <!-- User Update Form -->
+        <app-user-update-form class="w-full hidden md:block xl:block"></app-user-update-form>
     </div>
 </main>
