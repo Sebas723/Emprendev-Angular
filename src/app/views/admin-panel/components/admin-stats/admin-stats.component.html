@@ -1,0 +1,22 @@
+<div class="w-full box-area">
+
+    @for( statsItem of stats; track statsItem.id) {
+        <div class="text-white bg-black rounded-lg px-4 py-4">
+            
+            <h1 class="text-2xl font-semibold">{{ statsItem.title }}</h1>
+            
+            <div class="flex flex-row items-center justify-between mt-3">
+                
+                <div class="flex items-end gap-1">
+                    <p class="text-4xl font-semibold text-blue-300">{{ statsItem.value }}</p>
+                    <p class="text-sm">{{ statsItem.text }}</p>
+                </div>
+                
+                <div class="rounded-full bg-white text-black px-3 py-2">
+                    <i [class]="statsItem.icon" class="text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>
