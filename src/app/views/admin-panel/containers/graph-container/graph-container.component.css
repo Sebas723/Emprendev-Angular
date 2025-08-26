@@ -1,0 +1,11 @@
+.box-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .box-area {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}

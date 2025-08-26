@@ -6,6 +6,7 @@ import { CatalogOfferComponent } from './views/catalog-offer/catalog-offer.compo
 import { CatalogDevsComponent } from './views/catalog-devs/catalog-devs.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { CreateOfferComponent } from './views/create-offer/create-offer.component';
+import { AdminPanelComponent } from './views/admin-panel/admin-panel.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     {
         path: 'user-profile',
         component: UserProfileComponent,
+    },
+    {
+        path: 'admin-panel',
+        component: AdminPanelComponent,
     },
     {
         path: '**',
